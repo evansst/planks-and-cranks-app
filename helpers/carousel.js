@@ -63,7 +63,7 @@ function toCarouselItem(image) {
   $carouselItem.className = 'carousel-item';
 
   $carouselItem.innerHTML = `
-    <img src="${image}" class="d-block img-fluid" style="max-width: 800px;">
+    <img src="${image}" class="d-block img-fluid" style="max-width: 600px;">
     `;
 
   return $carouselItem;
