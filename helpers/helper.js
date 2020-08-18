@@ -17,4 +17,5 @@ export function formatMoney(number, decPlaces, decSep, thouSep) {
   }
 
 export const baseURL = `http://localhost:3000`;
+export const listingsURL = `${baseURL}/listings`;
 export const main = document.querySelector('main');

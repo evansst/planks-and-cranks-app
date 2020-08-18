@@ -1,13 +1,13 @@
 import * as $ from "../helpers/helper.js";
 
-const listingsURL = `${$.baseURL}/listings`;
+
 
 const $cardDeck = document.createElement('div');
 $cardDeck.className = 'row row-cols-1 row-cols-md-3';
 
 export default function listingIndex() {
 
-  fetch(listingsURL)
+  fetch($.listingsURL)
     .then($.parseJSON)
     .then(displayCards);
 
