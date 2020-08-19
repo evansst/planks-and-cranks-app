@@ -1,14 +1,13 @@
 import homePage from "./home/homePage.js";
 import shopPage from "./shop/shopPage.js";
+import loginPage from "./login/login.js";
+import * as $ from "./helpers/helper.js";
 
-const baseURL = `http://localhost:3000`;
-const $main = document.querySelector('main');
 
 const routes = {
   '': homePage,
   'shop': shopPage,
-  
-  // '/sell': sellPage,
+  'login': loginPage,
 };
 
 function routeChange(e) {
@@ -20,22 +19,20 @@ function routeChange(e) {
 
   const page = routes[path];
   
-  $main.innerHTML = page
-    ?page(listingID)
+  $.main.innerHTML = page
+    ? page(listingID)
     : error404();
 }
 
 function error404() {
-  return (`
+  return `
     <section>
       <h1>ERROR 404</h1>
       <h2>Uh, oh.  It looks like that page doesn't exist</h2>
     </section>
-  `);
+  `;
 }
 
 
 window.addEventListener('load', routeChange);
 window.addEventListener('hashchange', routeChange);
-
-export { $main, baseURL };
