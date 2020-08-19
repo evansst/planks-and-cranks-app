@@ -1,12 +1,14 @@
 import { formatMoney } from "../../helpers/helper.js";
 
-export default function specs(listing) {
+export default function info(listing) {
   console.log(listing);
 
+  const $container = header(listing);
+  const $specs = $container.lastChild;
 
+  $specs.append(specs(listing.specs));
 
-
-  return header(listing);
+  return $container;
 }
 
 function header(listing) {
@@ -19,24 +21,41 @@ function header(listing) {
       <h9><em>${formatMoney(listing.price)}</em></h5>
     </div>
     <div class="row justify-content-start ">
-      <h7>${listing.year}, ${listing.size}</h3>
+      <h7>${listing.gear_type} ${listing.year}, ${listing.size}</h3>
     </div>
     <div class="row">
       <button type="button" class="btn btn-secondary btn-block">Add to Cart</button>
     </div>
-    <div class="row">
-      <h5 class="border-bottom border-dark">Condition:</h5>
+    <div class="row justify-content-between border-bottom border-dark">
+      <h5>Condition:</h5>
+      <p><em>${listing.condition}</em></p>
     </div>
     <div class="row">
-      <p>${listing.condition}</p>
     </div>
     <div class="row">
-      <h5 class="border-bottom border-dark">Specifications:</h5>
+      <h5>Specifications:</h5>
     </div>
     <div id="specifications" class="row">
 
-    </div>`
-    ;
+    </div>`;
 
   return $container;
+}
+
+function specs(specs) {
+  const $ul = document.createElement('ul');
+
+  const keys = Object.keys(specs);
+  const values = Object.values(specs);
+
+  for(let i = 0; i < keys.length; i++) {
+    const $li = document.createElement('li');
+    $li.className = 'border-top';
+
+    $li.innerHTML = `<p>${keys[i]}: ${values[i]}</p>`;
+
+    $ul.append($li);
+  }
+
+  return $ul;
 }
