@@ -11,6 +11,7 @@ export default function loginPage() {
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           </form>
+          <a href="#/create_account">Create a User Account</a>
         </div>
       </div>
       `;
