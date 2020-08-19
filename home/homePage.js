@@ -2,7 +2,7 @@ const $main = document.querySelector('main');
 
 export default function homePage() {
   return `
-    <div class="container-fluid">
+    <div class="container"  style="max-height: 20%;">
       <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>

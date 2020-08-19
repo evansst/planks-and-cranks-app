@@ -12,9 +12,9 @@ export function formatMoney(number, decPlaces, decSep, thouSep) {
     (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
   }
 
-  export function parseJSON(response) {
-    return response.json();
-  }
+export function parseJSON(response) {
+  return response.json();
+}
 
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;

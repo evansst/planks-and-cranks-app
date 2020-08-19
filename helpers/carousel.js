@@ -24,7 +24,7 @@ function createCarouselElement() {
   const $container = document.createElement('div');
   const $carousel = document.createElement('div');
 
-  $container.className = 'd-inline-flex p-2';
+  $container.className = 'd-inline-flex p-3';
   $container.append($carousel);
   $carousel.outerHTML = `
     <div id="imagesCarousel" class="carousel" data-ride="carousel">
