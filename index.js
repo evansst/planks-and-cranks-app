@@ -19,11 +19,9 @@ function routeChange(e) {
   if(route.length > 2) { listingID = route.split('/')[2]; }
 
   const page = routes[path];
-
+  
   $main.innerHTML = page
-    ? listingID
-      ? page(listingID)
-      : page()
+    ?page(listingID)
     : error404();
 }
 

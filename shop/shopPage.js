@@ -1,6 +1,6 @@
 
-import listingIndex from "./listingIndex.js";
-import listingShowPage from "./listingShow.js";
+import listingIndex from "./index/listingIndex.js";
+import listingShowPage from "./show/listingShow.js";
 
 export default function shopPage(listingID) {
 

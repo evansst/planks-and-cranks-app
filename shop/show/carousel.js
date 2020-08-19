@@ -1,6 +1,6 @@
 let I = 0;
 
-export function carousel(images) {
+export default function carousel(images) {
     const $carousel = createCarouselElement();
     const $carouselInner = document.createElement('div');
     const $ol = document.createElement('ol');
@@ -24,7 +24,8 @@ function createCarouselElement() {
   const $container = document.createElement('div');
   const $carousel = document.createElement('div');
 
-  $container.className = 'd-inline-flex p-3';
+  $container.className = 'col-auto';
+  $container.style = 'max-width: 800px;';
   $container.append($carousel);
   $carousel.outerHTML = `
     <div id="imagesCarousel" class="carousel" data-ride="carousel">
@@ -63,7 +64,7 @@ function toCarouselItem(image) {
   $carouselItem.className = 'carousel-item';
 
   $carouselItem.innerHTML = `
-    <img src="${image}" class="d-block img-fluid" style="max-width: 600px;">
+    <img src="${image}" class="d-block img-fluid">
     `;
 
   return $carouselItem;
