@@ -16,6 +16,14 @@ export function parseJSON(response) {
   return response.json();
 }
 
+export function login(event) {
+  console.log(event);
+}
+
+export const routeForm = {
+  'form-signin': login,
+};
+
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;
 export const main = document.querySelector('main');

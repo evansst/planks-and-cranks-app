@@ -1,6 +1,6 @@
 import homePage from "./home/homePage.js";
 import shopPage from "./shop/shopPage.js";
-import loginPage from "./login/login.js";
+import { loginPage, login } from "./login/login.js";
 import * as $ from "./helpers/helper.js";
 
 
@@ -33,6 +33,11 @@ function error404() {
   `;
 }
 
-
 window.addEventListener('load', routeChange);
 window.addEventListener('hashchange', routeChange);
+
+document.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  $.routeForm[event.target.id](event);
+});

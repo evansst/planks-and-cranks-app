@@ -1,13 +1,10 @@
 import * as $ from "../../helpers/helper.js";
 
-
-
-
 export default function listingIndex() {
   
   fetch($.listingsURL)
-  .then($.parseJSON)
-  .then(displayCards);
+    .then($.parseJSON)
+    .then(displayCards);
   
   return '';
 }
