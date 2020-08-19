@@ -12,10 +12,9 @@ export default function listingShowPage(listingID) {
   return '';
 }
 
-function displayListing(response) {
-  const listing = response.listing;
-  const images = response.image_urls;
-
+function displayListing(listing) {
+  const images = listing.images.map(image => 'http://localhost:3000' + image.url);
+  
   const $listingContainer = document.createElement('div');
   $listingContainer.className = 'row';
 
