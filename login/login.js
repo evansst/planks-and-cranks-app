@@ -19,10 +19,10 @@ export function loginPage() {
 
 export function login(event) {
   $.setLoginSpinner();
-  setTimeout(() => sendFetch(event), 1000);
+  setTimeout(() => getUser(event), 1000);
 }
 
-function sendFetch(event) {
+function getUser(event) {
   const username = event.target.username.value;
   const password = event.target.password.value;
 

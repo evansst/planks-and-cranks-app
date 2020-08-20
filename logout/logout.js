@@ -11,6 +11,6 @@ export default function logout() {
     localStorage.setItem('username', '');
     localStorage.setItem('user_id', '');
     localStorage.setItem('token', '');
-    alert('You have been logged out.');
+    // alert('You have been logged out.');
     location.href = '#/';
 }

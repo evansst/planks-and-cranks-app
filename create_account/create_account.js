@@ -32,10 +32,10 @@ export default function createAccountPage() {
 
 export function signUp(event) {
   $.setLoginSpinner();
-  setTimeout(() => sendFetch(event), 1000);
+  setTimeout(() => sendUser(event), 1000);
 }
 
-function sendFetch(event) {
+function sendUser(event) {
   const user = {
       username: event.target.username.value,
       name: event.target.name.value,

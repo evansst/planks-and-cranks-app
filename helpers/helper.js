@@ -1,6 +1,12 @@
 import { login } from "../login/login.js";
 import { signUp } from "../create_account/create_account.js";
 
+export const baseURL = `http://localhost:3000`;
+export const listingsURL = `${baseURL}/listings`;
+export const loginURL = `${baseURL}/login`;
+export const usersURL = `${baseURL}/users`;
+export const main = document.querySelector('main');
+
 export function formatMoney(number, decPlaces, decSep, thouSep) {
   decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
   decSep = typeof decSep === "undefined" ? "." : decSep;
@@ -24,12 +30,6 @@ export const routeForm = {
   'form-create-account': signUp,
 };
 
-export const baseURL = `http://localhost:3000`;
-export const listingsURL = `${baseURL}/listings`;
-export const loginURL = `${baseURL}/login`;
-export const usersURL = `${baseURL}/users`;
-export const main = document.querySelector('main');
-
 export function setLoginSpinner() {
   const $button = document.querySelector('button');
   $button.innerHTML = `
@@ -41,21 +41,22 @@ export function setLoginSpinner() {
 
 export function loggedIn(user) {
   saveUser(user);
-  setLogoutIcon();
+  setLogoutIcon(user.username);
 
   return (token) => saveToken(token);
 }
 function saveUser(user) {
   localStorage.setItem('username', user.username);
   localStorage.setItem('user_id', user.id);
-  document.querySelector('h6#username').innerHTML = `<a href="#/user_profile"> ${user.name}</a>`;
+  localStorage.setItem('name', user.name);
 }
 
 function saveToken(token) {
   localStorage.setItem('token', token);
 }
 
-function setLogoutIcon() {
+export function setLogoutIcon(username) {
+  document.querySelector('h6#username').innerHTML = `<a href="#/user_profile"> ${username}</a>`;
   document.querySelector('a#login-link').outerHTML =`
     <a id='login-link' class="nav-link" href="#/logout">
       <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-dash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -9,16 +9,17 @@ import logout from "./logout/logout.js";
 function routeChange(e) {
   const route = window.location.hash.split('#')[1] || '/';
   const path = route.split('/')[1];
-  let listingID;
-
-  if(route.length > 2) { listingID = route.split('/')[2]; }
-
+  let ID;
+  if(route.length > 2) { ID = route.split('/')[2]; }
+  
   const page = routes[path];
   
   $.main.innerHTML = page
-    ? page(listingID)
+    ? page(ID)
     : error404();
   
+  const user = loggedIn();
+  if(user) $.setLogoutIcon(user.username);
 }
 
 const error404 = () => {
@@ -37,6 +38,16 @@ const routes = {
   'create_account': createAccountPage,
   'logout': logout,
 };
+
+function loggedIn() {
+  return (localStorage.getItem('user_id'))
+    ? {
+      user_id: localStorage.getItem('user_id'),
+      username: localStorage.getItem('username'),
+      token: localStorage.getItem('token'),    
+    }
+    : false;
+}
 
 window.addEventListener('load', routeChange);
 window.addEventListener('hashchange', routeChange);
