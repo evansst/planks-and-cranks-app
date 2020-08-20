@@ -3,9 +3,8 @@ import { formatMoney } from "../../helpers/helper.js";
 export default function info(listing) {
 
   const $container = header(listing);
-  const $specs = $container.lastChild;
 
-  $specs.append(specs(listing.specs));
+  $container.append(specs(listing.specs));
 
   return $container;
 }
@@ -34,14 +33,16 @@ function header(listing) {
     <div class="row">
       <h5>Specifications:</h5>
     </div>
-    <div id="specifications" class="row">
-
-    </div>`;
+    `;
 
   return $container;
 }
 
 function specs(specs) {
+  const $specs = document.createElement('div');
+  $specs.id = 'specifications';
+  $specs.className = 'row';
+
   const $ul = document.createElement('ul');
 
   const keys = Object.keys(specs);
@@ -56,5 +57,6 @@ function specs(specs) {
     $ul.append($li);
   }
 
-  return $ul;
+  $specs.append($ul);
+  return $specs;
 }
