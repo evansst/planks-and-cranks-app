@@ -11,7 +11,7 @@ export default function listingIndex() {
 
 function displayCards(listings) {
   const $cardDeck = document.createElement('div');
-  $cardDeck.className = 'row row-cols-1 row-cols-md-3 pt-5';
+  $cardDeck.className = 'row row-cols-1 row-cols-md-3 p-5';
 
   listings
     .map(listing => toListingCard(listing)($cardDeck));
