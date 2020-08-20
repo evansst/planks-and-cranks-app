@@ -1,3 +1,5 @@
+import { login } from "../login/login.js";
+
 export function formatMoney(number, decPlaces, decSep, thouSep) {
   decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
   decSep = typeof decSep === "undefined" ? "." : decSep;
@@ -16,14 +18,11 @@ export function parseJSON(response) {
   return response.json();
 }
 
-export function login(event) {
-  console.log(event);
-}
-
 export const routeForm = {
   'form-signin': login,
 };
 
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;
+export const loginURL = `${baseURL}/login`;
 export const main = document.querySelector('main');

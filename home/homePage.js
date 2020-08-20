@@ -2,7 +2,7 @@
 
 export default function homePage() {
   return `
-    <div class="container"  style="max-height: 20%;">
+    <div class="container-fluid">
       <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
