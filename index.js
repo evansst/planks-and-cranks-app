@@ -1,9 +1,9 @@
+import * as $ from "./helpers/helper.js";
 import homePage from "./home/homePage.js";
 import shopPage from "./shop/shopPage.js";
 import { loginPage } from "./login/login.js";
-import * as $ from "./helpers/helper.js";
-
-
+import createAccountPage from "./create_account/create_account.js";
+import logout from "./logout/logout.js";
 
 
 function routeChange(e) {
@@ -34,6 +34,8 @@ const routes = {
   '': homePage,
   'shop': shopPage,
   'login': loginPage,
+  'create_account': createAccountPage,
+  'logout': logout,
 };
 
 window.addEventListener('load', routeChange);

@@ -1,11 +1,9 @@
 import * as $ from '../helpers/helper.js';
 
-
-
 export function loginPage() {
 
     return `
-      <div class="container text-center pt-5" style="width: 370px;"=>
+      <div class="container text-center pt-5" style="width: 370px;">
         <form id="form-signin">
           <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
           <label for="inputUsername" class="sr-only">Username</label>
@@ -20,7 +18,7 @@ export function loginPage() {
 }
 
 export function login(event) {
-  setLoginSpinner();
+  $.setLoginSpinner();
   setTimeout(() => sendFetch(event), 1000);
 }
 
@@ -40,16 +38,9 @@ function sendFetch(event) {
   })
     .then($.parseJSON)
     .then(checkResponse);
-}
+}    
 
-function setLoginSpinner() {
-  const $button = document.getElementById('login-button');
-  $button.innerHTML = `
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    `;
-}
+
 
 function checkResponse(response) {
   const { user, token, message } = response;
@@ -57,20 +48,11 @@ function checkResponse(response) {
   if(message) {
     alert(message);
     document.getElementById('form-signin').reset();
-    const $button = document.getElementById('login-button');
+    const $button = document.querySelector('button');
     $button.innerHTML = 'Sign In';
   } else {
-    saveToken(token);
-    saveUser(user);
-    location.href='#/';
+    $.loggedIn(user)(token);
+    location.href = '#/';
   }
 }
 
-function saveToken(token) {
-  localStorage.setItem('token', token);
-}
-
-function saveUser(user) {
-  localStorage.setItem('user_id', user.id);
-  localStorage.setItem('username', user.username);
-}
