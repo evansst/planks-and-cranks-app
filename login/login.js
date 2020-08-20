@@ -17,7 +17,7 @@ export function loginPage() {
     `;
 }
 
-export function login(event) {
+export function tryLogin(event) {
   $.setLoginSpinner();
   setTimeout(() => getUser(event), 1000);
 }
@@ -51,7 +51,7 @@ function checkResponse(response) {
     const $button = document.querySelector('button');
     $button.innerHTML = 'Sign In';
   } else {
-    $.loggedIn(user)(token);
+    $.login(user)(token);
     location.href = '#/';
   }
 }

@@ -4,6 +4,7 @@ import shopPage from "./shop/shopPage.js";
 import { loginPage } from "./login/login.js";
 import createAccountPage from "./create_account/create_account.js";
 import logout from "./logout/logout.js";
+import createListing from "./sell/createListing.js";
 
 
 function routeChange(e) {
@@ -18,7 +19,7 @@ function routeChange(e) {
     ? page(ID)
     : error404();
   
-  const user = loggedIn();
+  const user = $.loggedIn();
   if(user) $.setLogoutIcon(user.username);
 }
 
@@ -37,17 +38,10 @@ const routes = {
   'login': loginPage,
   'create_account': createAccountPage,
   'logout': logout,
+  'sell': createListing,
 };
 
-function loggedIn() {
-  return (localStorage.getItem('user_id'))
-    ? {
-      user_id: localStorage.getItem('user_id'),
-      username: localStorage.getItem('username'),
-      token: localStorage.getItem('token'),    
-    }
-    : false;
-}
+
 
 window.addEventListener('load', routeChange);
 window.addEventListener('hashchange', routeChange);

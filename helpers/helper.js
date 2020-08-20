@@ -1,4 +1,4 @@
-import { login } from "../login/login.js";
+import { tryLogin } from "../login/login.js";
 import { signUp } from "../create_account/create_account.js";
 
 export const baseURL = `http://localhost:3000`;
@@ -26,7 +26,7 @@ export function parseJSON(response) {
 }
 
 export const routeForm = {
-  'form-signin': login,
+  'form-signin': tryLogin,
   'form-create-account': signUp,
 };
 
@@ -38,13 +38,23 @@ export function setLoginSpinner() {
     </div>
     `;
 }
+export function loggedIn() {
+  return (localStorage.getItem('user_id'))
+    ? {
+      user_id: localStorage.getItem('user_id'),
+      username: localStorage.getItem('username'),
+      token: localStorage.getItem('token'),    
+    }
+    : false;
+}
 
-export function loggedIn(user) {
+export function login(user) {
   saveUser(user);
   setLogoutIcon(user.username);
 
   return (token) => saveToken(token);
 }
+
 function saveUser(user) {
   localStorage.setItem('username', user.username);
   localStorage.setItem('user_id', user.id);

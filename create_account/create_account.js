@@ -63,7 +63,7 @@ function checkResponse(response) {
     const $button = document.querySelector('button');
     $button.innerHTML = 'Submit';
   } else {
-    $.loggedIn(user)(token);
+    $.login(user)(token);
     location.href = '#/';
   }
 }
