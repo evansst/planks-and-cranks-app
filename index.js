@@ -8,6 +8,7 @@ import createListing from "./sell/createListing.js";
 import userProfilePage from "./profile/userProfile.js";
 import { addSpecInput } from "./sell/createListing.js";
 import { addToCart, emptyCart } from "./cart/cart.js";
+import checkoutPage from "./checkout/checkout.js";
 
 function routeChange(e) {
   const route = window.location.hash.split('#')[1] || '/';
@@ -42,6 +43,7 @@ const routes = {
   'sell': createListing,
   'login': loginPage,
   'user_profile': userProfilePage,
+  'checkout': checkoutPage,
 };
 
 
@@ -52,6 +54,7 @@ window.addEventListener('hashchange', routeChange);
 document.addEventListener('click', () => {
   if(event.target.id === 'add-spec-input') addSpecInput(event);
   if(event.target.id === 'add-to-cart') addToCart(event);
+  if(event.target.id === 'empty-cart') emptyCart();
 });
 
 document.addEventListener('submit', (event) => {
