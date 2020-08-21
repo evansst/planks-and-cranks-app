@@ -16,7 +16,7 @@ export function loginPage() {
             <button id="login-button" class="btn btn-lg btn-primary btn-block pt-2" type="submit">Sign in</button>
           </div>
         </form>
-        <a class="pt-2" href="#/create_account">Create an Account</a>
+        <a id="create-account" class="pt-2" href="#/create_account">Create an Account</a>
       </div>
     `;
 }
