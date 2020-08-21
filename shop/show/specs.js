@@ -22,7 +22,7 @@ function header(listing) {
       <h7>${listing.gear_type} ${listing.year}, ${listing.size}</h3>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-secondary btn-block m-4">Add to Cart</button>
+      <button listing_id="${listing.id}" id="add-to-cart" type="button" class="btn btn-secondary btn-block m-4">Add to Cart</button>
     </div>
     <div class="row justify-content-between">
       <h5>Condition:</h5>

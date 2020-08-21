@@ -13,6 +13,7 @@ export default function logout() {
     localStorage.setItem('username', '');
     localStorage.setItem('user_id', '');
     localStorage.setItem('token', '');
+    localStorage.setItem('cart', '');
 
     $.closeModal();
     window.location.hash = '#';

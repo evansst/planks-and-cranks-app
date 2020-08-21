@@ -7,6 +7,7 @@ import logout from "./logout/logout.js";
 import createListing from "./sell/createListing.js";
 import userProfilePage from "./profile/userProfile.js";
 import { addSpecInput } from "./sell/createListing.js";
+import { addToCart, emptyCart } from "./cart/cart.js";
 
 function routeChange(e) {
   const route = window.location.hash.split('#')[1] || '/';
@@ -50,9 +51,11 @@ window.addEventListener('hashchange', routeChange);
 
 document.addEventListener('click', () => {
   if(event.target.id === 'add-spec-input') addSpecInput(event);
+  if(event.target.id === 'add-to-cart') addToCart(event);
 });
 
 document.addEventListener('submit', (event) => {
   event.preventDefault();
   $.routeForm[event.target.id](event);
 });
+

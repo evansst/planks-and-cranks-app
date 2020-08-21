@@ -80,7 +80,6 @@ function toListingCard(listing) {
           <p class="card-text">${listing.year}, ${listing.size}</p>
           <p class="card-text">${$.formatMoney(listing.price)} <br> <small class="text-muted"><del>${$.formatMoney(listing.msrp)}</del></small></p>
           <div class="row justify-content-around">
-            <form listing_id="${listing.id}" id="edit-listing"><input class="btn-sm btn-primary" type="submit" value="Edit"></input></form>
             <form listing_id="${listing.id}" id="delete-listing"><input class="btn-sm btn-danger" type="submit" value="Remove"></input></form>
           </div>
         </div>
