@@ -17,7 +17,7 @@ function displayListing(listing) {
   const images = listing.images.map(image => 'http://localhost:3000' + image.url);
   
   const $listingContainer = document.createElement('div');
-  $listingContainer.className = 'row';
+  $listingContainer.className = 'row justify-content-center';
   console.log(listing);
   $listingContainer.append(carousel(images));
   $listingContainer.append(specs(listing));
