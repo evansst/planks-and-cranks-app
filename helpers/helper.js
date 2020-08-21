@@ -2,6 +2,7 @@
 import { tryLogin } from "../login/login.js";
 import { signUp } from "../create_account/create_account.js";
 import sendListing from "../sell/sendListing.js";
+import { deleteListing } from "../profile/userProfile.js";
 
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;
@@ -31,6 +32,7 @@ export const routeForm = {
   'form-signin': tryLogin,
   'form-create-account': signUp,
   'form-create-listing': sendListing,
+  'delete-listing': deleteListing,
 };
 
 export function setLoginSpinner() {

@@ -14,7 +14,7 @@ function header(listing) {
   $container.className = 'col-sm-4 pt-5';
 
   $container.innerHTML =`
-    <div class="row justify-content-between border-bottom border-dark">
+    <div class="row justify-content-between">
       <h4>${listing.brand} - ${listing.model}</h3>
       <h9><em>${formatMoney(listing.price)}</em></h5>
     </div>
@@ -22,9 +22,9 @@ function header(listing) {
       <h7>${listing.gear_type} ${listing.year}, ${listing.size}</h3>
     </div>
     <div class="row">
-      <button type="button" class="btn btn-secondary btn-block">Add to Cart</button>
+      <button type="button" class="btn btn-secondary btn-block m-4">Add to Cart</button>
     </div>
-    <div class="row justify-content-between border-bottom border-dark">
+    <div class="row justify-content-between">
       <h5>Condition:</h5>
       <p><em>${listing.condition}</em></p>
     </div>

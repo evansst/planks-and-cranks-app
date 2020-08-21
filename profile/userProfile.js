@@ -18,7 +18,7 @@ function renderUserPage(response) {
 
   
   const $rightColumn = document.createElement('div');
-  $rightColumn.className = 'col-7 pr-5';
+  $rightColumn.className = 'col-8 pr-5 justify-content-center';
   $rightColumn.append(cardDeck(listings));
   
   $container.innerHTML += userInfo(user);
@@ -29,7 +29,7 @@ function renderUserPage(response) {
 
 function userInfo(user) {
   return `
-    <div id="user-info" class="col-3 p-5 ">
+    <div id="user-info" class="col-4 p-5 justify-content-center">
       <div class="row p-3">
         <img src="http://localhost:3000/${user.avatar.url}" class="rounded img-thumbnail" style="max-height: 250px;">
       </div>
@@ -72,11 +72,25 @@ function toListingCard(listing) {
           <p class="card-text">${listing.year}, ${listing.size}</p>
           <p class="card-text">${$.formatMoney(listing.price)} <br> <small class="text-muted"><del>${$.formatMoney(listing.msrp)}</del></small></p>
           <div class="row justify-content-around">
-            <button class="btn btn-primary" type="submit" value="Submit">Edit</button>
-            <button class="btn btn-danger" type="submit" value="Submit">Delete</button>
+            <form id="edit-listing"><input class="btn btn-primary" type="submit" value="Edit"></input></form>
+            <form listing_id="${listing.id}" id="delete-listing"><input class="btn btn-danger" type="submit" value="Remove"></input></form>
           </div>
         </div>
       </div>
   `;
   return $listingCard;
+}
+
+export function deleteListing(event) {
+  const listing_id = event.target.attributes.listing_id.value;
+
+  event.path[4].remove();
+
+  alert('Your listing was removed');
+
+  fetch(`${$.listingsURL}/${listing_id}`, {
+    method: 'DELETE'
+  });
+  
+
 }
