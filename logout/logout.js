@@ -15,4 +15,5 @@ export default function logout() {
     localStorage.setItem('token', '');
 
     $.closeModal();
+    window.location.hash = '#';
 }

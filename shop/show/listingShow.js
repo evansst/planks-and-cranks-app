@@ -18,7 +18,7 @@ function displayListing(listing) {
   
   const $listingContainer = document.createElement('div');
   $listingContainer.className = 'row justify-content-center';
-  console.log(listing);
+  
   $listingContainer.append(carousel(images));
   $listingContainer.append(specs(listing));
   $listingContainer.append(description(listing));
