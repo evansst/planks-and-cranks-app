@@ -1,6 +1,7 @@
 import * as $ from '../../helpers/helper.js';
 import carousel from './carousel.js';
 import specs from './specs.js';
+import description from './details.js';
 
 
 export default function listingShowPage(listingID) {
@@ -17,9 +18,10 @@ function displayListing(listing) {
   
   const $listingContainer = document.createElement('div');
   $listingContainer.className = 'row';
-
+  console.log(listing);
   $listingContainer.append(carousel(images));
   $listingContainer.append(specs(listing));
+  $listingContainer.append(description(listing));
 
   $.main.append($listingContainer);
 }

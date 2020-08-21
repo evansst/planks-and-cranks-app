@@ -16,7 +16,6 @@ export default function carousel(images) {
     const $thumbs = images.map(image => toCarouselThumb(image)($ol));
 
     $carousel.children[0].append($ol);
-
     return $carousel;
 }
 
@@ -24,7 +23,7 @@ function createCarouselElement() {
   const $container = document.createElement('div');
   const $carousel = document.createElement('div');
 
-  $container.className = 'col-auto';
+  $container.className = 'col-sm-6 pt-5';
   $container.style = 'max-width: 800px;';
   $container.append($carousel);
   $carousel.outerHTML = `

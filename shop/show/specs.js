@@ -11,7 +11,7 @@ export default function info(listing) {
 
 function header(listing) {
   const $container = document.createElement('div');
-  $container.className = 'col-4';
+  $container.className = 'col-sm-4 pt-5';
 
   $container.innerHTML =`
     <div class="row justify-content-between border-bottom border-dark">
