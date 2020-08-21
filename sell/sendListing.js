@@ -6,26 +6,24 @@ export default function sendListing(event) {
     alert('You must log in or create and account to sell your stuff!');
     document.querySelector('#login-link').click();
   } else {
-
-    let formData = new FormData(event.target);
     
-    // const images = event.target.imagesInput.files;
-
-    // const listing = {
-    //     brand: event.target.brandInput.value,
-    //     model: event.target.modelInput.value,
-    //     year: event.target.yearInput.value,
-    //     gear_type: event.target.gearTypeInput.value,
-    //     size: event.target.sizeInput.value,
-    //     condition: event.target.conditionInput.value,
-    //     msrp: event.target.msrpInput.value,
-    //     price: event.target.priceInput.value,
-    //     description: event.target.descriptionInput.value,
-    //     user_id: localStorage.user_id, 
-    // };
-
+    const newListing = filterForm(event.target);    
+    
+    let formData = new FormData(newListing);
     postListing(formData);
   }
+}
+
+function filterForm(form) {
+  const $specKeys = document.querySelectorAll('#specKeyInput');
+  const $specValues = document.querySelectorAll('#specValueInput');
+
+  for(let i = 0; i < $specKeys.length; i++) {
+    $specKeys[i].name = `specs[${$specKeys[i].value}]`;
+    $specKeys[i].value = $specValues[i].value;
+  }
+
+  return form;
 }
 
 function postListing(formData) {
@@ -39,19 +37,5 @@ function postListing(formData) {
     body: formData
   })
     .then($.parseJSON)
-    .then(console.log);
-    // .then(response => postImages(response, images));
-}
-
-function postImages(listing, images) {
-  let formData = new FormData();
-  formData.append('images', {images});
-
-
-  fetch(`${$.listingsURL}/${listing.id}`, {
-    method: 'PATCH',
-    body: formData
-  })
-    .then($.parseJSON)
-    .then(console.log);
+    .then(response => window.location.hash = `/shop/${response.id}`);
 }

@@ -86,10 +86,27 @@ export default function createListing() {
         <div class="form-group row">
           <div class="col-sm-1">Images</div>
           <div class="custom-file col-sm-8">
-            <input type="file" name="images" class="custom-file-input" id="imagesInput">
+            <input type="file" name="images" class="custom-file-input" id="imagesInput" multiple="true">
             <label class="custom-file-label text-left" for="imagesInput">Choose file</label>
             <small id="imagesHelp" class="form-text text-muted">You must upload at least one image</small>
           </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-1"></div>
+          <label for="specsInput" class="col-sm-8 text-center pt-4">Specifications</label>
+        </div>
+        <div class="form-group row row-cols-1 row-cols-md-9" id="specsInput">
+          <div class="row">
+            <label for="specKeyInput" class="col-sm-1">Spec</label>
+            <input type="text" name="" id="specKeyInput" class="form-control col-sm-3" placeholder="ex. Fork or Bindings" required>
+            <label for="specValueInput" class="col-sm-2">Value</label>
+            <input type="text" name="" id="specValueInput" class="form-control col-sm-3" placeholder="ex. Fox Float 36 or Look Pivot 12" required>
+            <div class="col-1">
+              <button id="add-spec-input" class="btn-sm btn-outline-secondary" type="button" value="+">+</button>
+            </div>
+            <div class="w-100 p-2"></div>
+          </div>
+
         </div>
         <div class="form-group row">
           <div class="col-sm-1"></div>
@@ -109,5 +126,26 @@ export default function createListing() {
       </form>
     </div>
     `;
+}
+
+export function addSpecInput() {
+  document.querySelector('#specsInput').append(specInput())  
+
+}
+
+function specInput() {
+  const $specInput = document.createElement('div');
+  $specInput.className = 'row';
+  $specInput.innerHTML = `
+    <label for="specKeyInput" class="col-sm-1">Spec</label>
+    <input type="text" name="" id="specKeyInput" class="form-control col-sm-3" placeholder="ex. Fork or Bindings" required>
+    <label for="specValueInput" class="col-sm-2">Value</label>
+    <input type="text" name="" id="specValueInput" class="form-control col-sm-3" placeholder="ex. Fox Float 36 or Look Pivot 12" required>
+    <div class="col-1">
+      <button id="add-spec-input" class="btn-sm btn-outline-secondary" type="button" value="+">+</button>
+    </div>
+    <div class="w-100 p-2"></div>`;
+
+  return $specInput;
 }
   

@@ -3,6 +3,8 @@ import { tryLogin } from "../login/login.js";
 import { signUp } from "../create_account/create_account.js";
 import sendListing from "../sell/sendListing.js";
 import { deleteListing } from "../profile/userProfile.js";
+import { addSpecInput } from "../sell/createListing.js";
+
 
 export const baseURL = `http://localhost:3000`;
 export const listingsURL = `${baseURL}/listings`;
@@ -33,6 +35,7 @@ export const routeForm = {
   'form-create-account': signUp,
   'form-create-listing': sendListing,
   'delete-listing': deleteListing,
+  'add-spec': addSpecInput,
 };
 
 export function setLoginSpinner() {
@@ -67,7 +70,7 @@ function saveUser(user) {
   localStorage.setItem('username', user.username);
   localStorage.setItem('user_id', user.id);
   localStorage.setItem('name', user.name);
-  
+
   const userInput = document.querySelector('input[name="user_id"]');
   if(userInput) userInput.value = user.id;
 }
