@@ -19,7 +19,7 @@ export default function sendListing(event) {
         msrp: event.target.msrpInput.value,
         price: event.target.priceInput.value,
         description: event.target.descriptionInput.value,
-        user_id: localStorage.getItem('user_id'), 
+        user_id: localStorage.user_id, 
     };
 
     postListing(listing, images);
@@ -32,6 +32,7 @@ function postListing(listing, images) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Athenticate': `Bearer ${localStorage.token}`
     },
     body: JSON.stringify(listing)
   })

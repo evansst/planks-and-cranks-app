@@ -2,9 +2,14 @@ import * as $ from '../helpers/helper.js';
 
 
 export default function userProfilePage() {
-  const user_id = localStorage.getItem('user_id');
+  const user_id = localStorage.user_id;
 
-  fetch(`${$.usersURL}/${user_id}`)
+  fetch(`${$.usersURL}/${user_id}`,{
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.token}`,
+    }
+  })
     .then($.parseJSON)
     .then(renderUserPage);
 }
@@ -30,18 +35,21 @@ function renderUserPage(response) {
 function userInfo(user) {
   return `
     <div id="user-info" class="col-4 p-5 justify-content-center">
-      <div class="row p-3">
+      <div class="row p-3 justify-content-center">
         <img src="http://localhost:3000/${user.avatar.url}" class="rounded img-thumbnail" style="max-height: 250px;">
       </div>
-      <div class="row px-3">
+      <div class="row px-3 justify-content-center">
         <h5>${user.name}</h5>
       </div>
-      <div class="row px-3">
+      <div class="row px-3 justify-content-center">
+        ${user.email_address}
+      </div>
+      <div class="row px-3 justify-content-center">
         ${user.username}
       </div>
-      <div class="row px-3">
-        ${user.email_address}
-      </div> 
+      <form class="row px-3 justify-content-center">
+        <input class="btn btn-primary btn-sm" type="submit" value="Edit"></input>
+      </form>  
     </div>
     `;
 }
@@ -72,8 +80,8 @@ function toListingCard(listing) {
           <p class="card-text">${listing.year}, ${listing.size}</p>
           <p class="card-text">${$.formatMoney(listing.price)} <br> <small class="text-muted"><del>${$.formatMoney(listing.msrp)}</del></small></p>
           <div class="row justify-content-around">
-            <form id="edit-listing"><input class="btn btn-primary" type="submit" value="Edit"></input></form>
-            <form listing_id="${listing.id}" id="delete-listing"><input class="btn btn-danger" type="submit" value="Remove"></input></form>
+            <form listing_id="${listing.id}" id="edit-listing"><input class="btn-sm btn-primary" type="submit" value="Edit"></input></form>
+            <form listing_id="${listing.id}" id="delete-listing"><input class="btn-sm btn-danger" type="submit" value="Remove"></input></form>
           </div>
         </div>
       </div>
@@ -89,7 +97,11 @@ export function deleteListing(event) {
   alert('Your listing was removed');
 
   fetch(`${$.listingsURL}/${listing_id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.token}`,
+    }
   });
   
 

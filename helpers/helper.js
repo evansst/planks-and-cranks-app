@@ -47,11 +47,11 @@ export function setLoginButton() {
   document.querySelector('#login-button').innerHTML = `Log In`;
 }
 export function loggedIn() {
-  return (localStorage.getItem('user_id'))
+  return (localStorage.user_id)
     ? {
-      user_id: localStorage.getItem('user_id'),
-      username: localStorage.getItem('username'),
-      token: localStorage.getItem('token'),    
+      user_id: localStorage.user_id,
+      username: localStorage.username,
+      token: localStorage.token,    
     }
     : false;
 }
