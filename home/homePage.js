@@ -13,22 +13,25 @@ export default function homePage() {
           <div class="carousel-item active">
             <img src="./photos/IMG_1695.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Where will your new bike take you?</h5>
-              <a href="#/shop">Shop new mountain bikes</a>
+              <a class='nav-link' href="#/shop">
+                <h5>Where will your new bike take you?</h5>
+              </a>
             </div>
           </div>
           <div class="carousel-item">
             <img src="./photos/IMG_2997.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Powder Magazine's skis of the year</h5>
-              <a href="https://www.powder.com/gear-guide/the-11-best-skis-of-the-year-2020/" target="_blank">Read Online</a>
+              <a class='nav-link' href="https://www.powder.com/gear-guide/the-11-best-skis-of-the-year-2020/" target="_blank">
+                <h5>Powder Magazine's skis of the year</h5>
+              </a>
             </div>
           </div>
           <div class="carousel-item">
             <img src="./photos/IMG_4920.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Ready to trade up?</h5>
-              <a href="#/sell">Sell Your Skis</a>
+              <a class='nav-link' href="#/sell">
+                <h5>Ready to trade up?</h5>
+              </a>
             </div>
           </div>
         </div>
