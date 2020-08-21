@@ -3,41 +3,44 @@ import * as $ from '../helpers/helper.js';
 export default function sendListing(event) {
 
   if (!$.loggedIn()) {
-    alert('You must log in or create and account to sell!');
+    alert('You must log in or create and account to sell your stuff!');
     document.querySelector('#login-link').click();
   } else {
 
-    const images = event.target.imagesInput.files;
+    let formData = new FormData(event.target);
+    
+    // const images = event.target.imagesInput.files;
 
-    const listing = {
-        brand: event.target.brandInput.value,
-        model: event.target.modelInput.value,
-        year: event.target.yearInput.value,
-        gear_type: event.target.gearTypeInput.value,
-        size: event.target.sizeInput.value,
-        condition: event.target.conditionInput.value,
-        msrp: event.target.msrpInput.value,
-        price: event.target.priceInput.value,
-        description: event.target.descriptionInput.value,
-        user_id: localStorage.user_id, 
-    };
+    // const listing = {
+    //     brand: event.target.brandInput.value,
+    //     model: event.target.modelInput.value,
+    //     year: event.target.yearInput.value,
+    //     gear_type: event.target.gearTypeInput.value,
+    //     size: event.target.sizeInput.value,
+    //     condition: event.target.conditionInput.value,
+    //     msrp: event.target.msrpInput.value,
+    //     price: event.target.priceInput.value,
+    //     description: event.target.descriptionInput.value,
+    //     user_id: localStorage.user_id, 
+    // };
 
-    postListing(listing, images);
+    postListing(formData);
   }
 }
 
-function postListing(listing, images) {
+function postListing(formData) {
 
   fetch($.listingsURL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Athenticate': `Bearer ${localStorage.token}`
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${localStorage.token}`
     },
-    body: JSON.stringify(listing)
+    body: formData
   })
     .then($.parseJSON)
-    .then(response => postImages(response, images));
+    .then(console.log);
+    // .then(response => postImages(response, images));
 }
 
 function postImages(listing, images) {

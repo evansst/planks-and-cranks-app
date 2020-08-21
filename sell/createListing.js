@@ -105,7 +105,7 @@ export default function createListing() {
             <button id="submit-button" class="btn btn-lg btn-primary btn-block" type="submit">Sell It!</button>
           </div>
         </div>
-
+        <input type="hidden" id="user-idInput" name="user_id" value="${localStorage.user_id}">
       </form>
     </div>
     `;

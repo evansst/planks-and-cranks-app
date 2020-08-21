@@ -67,6 +67,9 @@ function saveUser(user) {
   localStorage.setItem('username', user.username);
   localStorage.setItem('user_id', user.id);
   localStorage.setItem('name', user.name);
+  
+  const userInput = document.querySelector('input[name="user_id"]');
+  if(userInput) userInput.value = user.id;
 }
 
 function saveToken(token) {
