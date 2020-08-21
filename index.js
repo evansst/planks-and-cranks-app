@@ -6,7 +6,6 @@ import createAccountPage from "./create_account/create_account.js";
 import logout from "./logout/logout.js";
 import createListing from "./sell/createListing.js";
 
-
 function routeChange(e) {
   const route = window.location.hash.split('#')[1] || '/';
   const path = route.split('/')[1];
@@ -15,7 +14,7 @@ function routeChange(e) {
   
   const page = routes[path];
   
-  $.main.innerHTML = page
+  page
     ? page(ID)
     : error404();
   
@@ -35,10 +34,10 @@ const error404 = () => {
 const routes = {
   '': homePage,
   'shop': shopPage,
-  'login': loginPage,
   'create_account': createAccountPage,
   'logout': logout,
   'sell': createListing,
+  'login': loginPage,
 };
 
 

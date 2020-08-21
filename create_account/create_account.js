@@ -1,7 +1,7 @@
 import * as $ from '../helpers/helper.js';
 
 export default function createAccountPage() {
- return`
+ $.main.innerHTML = `
   <div class="container text-center pt-5" style="width: 370px;">
     <form id="form-create-account">
       <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
@@ -28,6 +28,9 @@ export default function createAccountPage() {
     </form>
   </div>
   `;
+
+  $.closeModal();
+
 }
 
 export function signUp(event) {

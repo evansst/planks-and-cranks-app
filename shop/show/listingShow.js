@@ -9,7 +9,7 @@ export default function listingShowPage(listingID) {
     .then($.parseJSON)
     .then(displayListing);
 
-  return '';
+  $.main.innerHTML = '';
 }
 
 function displayListing(listing) {

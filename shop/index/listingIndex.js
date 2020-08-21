@@ -6,7 +6,7 @@ export default function listingIndex() {
     .then($.parseJSON)
     .then(displayCards);
   
-  return '';
+  $.main.innerHTML = '';
 }
 
 function displayCards(listings) {

@@ -1,7 +1,7 @@
-
+import * as $ from '../helpers/helper.js';
 
 export default function homePage() {
-  return `
+  $.main.innerHTML = `
     <div class="container-fluid p-0">
       <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
