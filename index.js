@@ -5,6 +5,7 @@ import { loginPage } from "./login/login.js";
 import createAccountPage from "./create_account/create_account.js";
 import logout from "./logout/logout.js";
 import createListing from "./sell/createListing.js";
+import userProfilePage from "./profile/userProfile.js";
 
 function routeChange(e) {
   const route = window.location.hash.split('#')[1] || '/';
@@ -23,7 +24,7 @@ function routeChange(e) {
 }
 
 const error404 = () => {
-  return `
+  $.main.innerHTML =  `
     <section>
       <h1>ERROR 404</h1>
       <h2>Uh, oh.  It looks like that page doesn't exist</h2>
@@ -38,6 +39,7 @@ const routes = {
   'logout': logout,
   'sell': createListing,
   'login': loginPage,
+  'user_profile': userProfilePage,
 };
 
 

@@ -2,7 +2,7 @@ import * as $ from '../helpers/helper.js';
 
 export function loginPage() {
 
-    $.main.innerHTML =  `
+    $.main.innerHTML = `
       <div class="container text-center pt-5" style="width: 370px;">
         <form id="form-signin">
           <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
@@ -23,7 +23,8 @@ export function loginPage() {
 
 export function tryLogin(event) {
   $.setLoginSpinner();
-  setTimeout(() => getUser(event), 1000);
+  setTimeout(() => getUser(event), 500);
+  
 }
 
 function getUser(event) {
@@ -56,7 +57,7 @@ function checkResponse(response) {
     $.closeModal();
   
   }
-  document.querySelector('#submit-button').innerHTML = 'Sign In';
+  $.setLoginButton();
   document.getElementById('form-signin').reset();
 }
 

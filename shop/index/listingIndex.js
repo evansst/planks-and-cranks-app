@@ -11,7 +11,7 @@ export default function listingIndex() {
 
 function displayCards(listings) {
   const $cardDeck = document.createElement('div');
-  $cardDeck.className = 'row row-cols-1 row-cols-md-3 p-5';
+  $cardDeck.className = 'row row-cols-1 row-cols-md-3 p-4';
 
   listings
     .map(listing => toListingCard(listing)($cardDeck));
@@ -27,7 +27,7 @@ function toListingCard(listing) {
     $cardDeck.append($listingCard);
   
     $listingCard.outerHTML = `
-      <div class="col mb-4">
+      <div class="col p-3">
         <div onclick="location.href='#/shop/${listing.id}';" style="cursor:pointer;" class="card h-100">
           <div class="card-body d-flex h-100">
             <img src="http://localhost:3000${listing.images[0].url}" class="w-100 align-self-center" alt="${listing.brand} - ${listing.model}">

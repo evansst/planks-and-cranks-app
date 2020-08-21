@@ -19,10 +19,10 @@ export default function createAccountPage() {
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <div class="form-group">
-        <input type="password" name="password" class="form-control" id="password" placeholder="Password" require="">
+        <input type="password" name="password" class="form-control passwordInput" id="password" placeholder="Password" require="">
       </div>
       <div class="form-group">
-        <input type="password" name="confirm-password" class="form-control" id="confirm-password" placeholder="Confirm Password" require="">
+        <input type="password" name="confirm_password" class="form-control passwordInput" id="confirm-password" placeholder="Confirm Password" require="">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -35,7 +35,12 @@ export default function createAccountPage() {
 
 export function signUp(event) {
   $.setLoginSpinner();
-  setTimeout(() => sendUser(event), 1000);
+
+  (event.target.password.value === event.target.confirm_password.value) 
+    ? setTimeout(() => sendUser(event), 1000)
+    : checkResponse({ error: "Your passwords don't match!"});
+
+  $.setLoginButton();
 }
 
 function sendUser(event) {
@@ -62,7 +67,7 @@ function checkResponse(response) {
 
   if(error) {
     alert(error);
-    document.querySelector('#form-create-account').reset();
+    document.querySelectorAll('.passwordInput').forEach(input => input.value = '');
     const $button = document.querySelector('button');
     $button.innerHTML = 'Submit';
   } else {

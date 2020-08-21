@@ -34,12 +34,15 @@ export const routeForm = {
 };
 
 export function setLoginSpinner() {
-  const $button = document.querySelector('#submit-button');
+  const $button = document.querySelector('#login-button');
   $button.innerHTML = `
     <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
     </div>
     `;
+}
+
+export function setLoginButton() {
+  document.querySelector('#login-button').innerHTML = `Log In`;
 }
 export function loggedIn() {
   return (localStorage.getItem('user_id'))
